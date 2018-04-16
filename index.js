@@ -1,3 +1,5 @@
 'use strict';
 
-module.exports = require('./lib/xray');
+module.exports = {
+  middleware: require('./lib/xray')
+};

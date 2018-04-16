@@ -15,7 +15,7 @@ Pass in a segment to create a subsegment for that call, identified by the host n
 ```js
 const HttpTransport = require('@bbc/http-transport');
 const AWSXRay = require('aws-xray-sdk');
-const xray = require('@bbc/http-transport-xray');
+const xray = require('@bbc/http-transport-xray').middleware;
 
 const segment = new AWSXRay.Segment('mySegment');
 
