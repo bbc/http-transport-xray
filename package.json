@@ -20,8 +20,11 @@
     "middleware"
   ],
   "license": "Apache-2.0",
+  "peerDependencies": {
+    "@bbc/http-transport": "^3.2.0"
+  },
   "devDependencies": {
-    "@bbc/http-transport": "^3.1.0",
+    "@bbc/http-transport": "^3.2.0",
     "chai": "^4.1.2",
     "eslint": "^4.11.0",
     "eslint-config-iplayer-es6": "^3.1.1",

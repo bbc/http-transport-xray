@@ -16,15 +16,19 @@ const simpleResponseBody = 'Du mich auch';
 describe('Request collapsing', () => {
   let segment;
   let addNewSubsegment;
+  let addRemoteRequestData;
   let closeSubsegment;
 
   beforeEach(() => {
     nock.disableNetConnect();
     closeSubsegment = sinon.spy();
 
+    addRemoteRequestData = sinon.stub().returns();
+
     addNewSubsegment = sinon.stub().returns({
-      id: 'req123',
-      close: closeSubsegment
+      addRemoteRequestData,
+      close: closeSubsegment,
+      id: 'req123'
     });
 
     segment = {
@@ -104,5 +108,22 @@ describe('Request collapsing', () => {
 
     sinon.assert.notCalled(addNewSubsegment);
     sinon.assert.notCalled(closeSubsegment);
+  });
+
+  it('adds remote request data when a http response is available', async () => {
+    nock(host)
+      .get(path)
+      .reply(200, simpleResponseBody);
+
+    const client = HttpTransport.createClient();
+
+    const res = client
+      .use(xray(segment))
+      .get(url)
+      .asResponse();
+
+    await res;
+
+    sinon.assert.called(addRemoteRequestData);
   });
 });
