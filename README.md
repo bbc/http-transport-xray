@@ -1,5 +1,5 @@
 # HTTP Transport X-Ray
-Create X-Ray subsegments and add Tracing Header
+Create X-Ray subsegments and add Tracing Header for use with X-Ray in manual mode.
 
 ## Installation
 
