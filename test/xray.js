@@ -13,7 +13,7 @@ const path = '/';
 
 const simpleResponseBody = 'Du mich auch';
 
-describe('Request collapsing', () => {
+describe('xray', () => {
   let segment;
   let addNewSubsegment;
   let addRemoteRequestData;
